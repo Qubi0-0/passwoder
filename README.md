@@ -1,14 +1,12 @@
-# Slint C++ Template
+# Slint C++ Project
 
-A template for a C++ application that's using [Slint](https://slint.dev) for the user interface and CMake for the build system.
+A  C++ application that's using [Slint](https://slint.dev) for generating easy-to-remember passwords.
 
 ## About
 
-This template helps you get started developing a C++ application with Slint as toolkit
-for the user interface. It demonstrates the integration between the `.slint` UI markup and
-C++ code, how to trigger react to callbacks, get and set properties and use basic widgets.
+ My first project with Slint. I wanted to make an app, which would allow me to generate usefull passwords i can later use. Best passwords are ones you can easily remember but do not contain anything related to you such as favorite dates or names. Instead, use a combination of random words, numbers, and special characters to create a strong and secure password. 
 
-## Prerequisites
+<!-- ## Prerequisites
 
 In order to use this template and build a C++ application, you need to install a few tools:
 
@@ -19,8 +17,8 @@ If your target environment is Linux or Windows on an x86-64 architecture, then y
 
 <https://slint.dev/docs/cpp/cmake.html#install-binary-packages>
 
-Alternatively, this template will automatically download the Slint sources and compile them. This option requires you to install Rust by following the [Rust Getting Started Guide](https://www.rust-lang.org/learn/get-started). Once this is done, you should have the ```rustc``` compiler and the ```cargo``` build system installed in your path.
-
+Alternatively, this template will automatically download the Slint sources and compile them. This option requires you to install Rust by following the [Rust Getting Started Guide](https://www.rust-lang.org/learn/get-started). Once this is done, you should have the ```rustc``` compiler and the ```cargo``` build system installed in your path. -->
+<!-- 
 ## Usage
 
 1. Download and extract the [ZIP archive of this repository](https://github.com/slint-ui/slint-cpp-template/archive/refs/heads/main.zip).
@@ -55,4 +53,4 @@ We recommend using an IDE for development, along with our [LSP-based IDE integra
 We hope that this template helps you get started and you enjoy exploring making user interfaces with Slint. To learn more
 about the Slint APIs and the `.slint` markup language check out our [online documentation](https://slint.dev/docs/cpp/).
 
-Don't forget to edit this README to replace it by yours
+Don't forget to edit this README to replace it by yours -->
