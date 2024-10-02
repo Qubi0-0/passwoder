@@ -1,15 +1,21 @@
 import { Button, VerticalBox, HorizontalBox, Slider} from "std-widgets.slint";
 
 export component AppWindow inherits Window {
-    background: #0e5ae7cc;
+    background: #4b4e53cc;
     in-out property<string> password: "Password";
-    in-out property<int> words_num: 1;
+    in-out property<int> words_num: 3;
     callback request-generate-password();
     callback request-change-words_num();
 
     VerticalBox {
+        opacity: 1;
         Text {
             text: "Generated Password: \{root.password}";
+            wrap: TextWrap.word-wrap;
+            color: #ffffffcc;
+            font-italic: false;
+            font-size: 20px;
+            
         }
         Button {
             text: "Generate new";
@@ -28,7 +34,7 @@ export component AppWindow inherits Window {
                 }
             }
             Text {
-                text: "\{root.words_num}";
+                text: "Number of words: \{root.words_num}";
                 vertical-alignment: center;
                 horizontal-alignment: center;
                 font-size: 20px;
