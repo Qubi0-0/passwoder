@@ -6,6 +6,10 @@ A  C++ application that's using [Slint](https://slint.dev) for generating easy-t
 
  My first project with Slint. I wanted to make an app, which would allow me to generate usefull passwords i can later use. Best passwords are ones you can easily remember but do not contain anything related to you such as favorite dates or names. Instead, use a combination of random words, numbers, and special characters to create a strong and secure password. 
 
+## First look on the app (Early stage)
+
+![App V0.01](image.png)
+
 <!-- ## Prerequisites
 
 In order to use this template and build a C++ application, you need to install a few tools:
