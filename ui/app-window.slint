@@ -1,17 +1,19 @@
 import { Button, VerticalBox, HorizontalBox } from "std-widgets.slint";
 
 export component AppWindow inherits Window {
-    in-out property<int> counter: 22;
-    callback request-increase-value();
+    background: #0e5ae7cc;
+    in-out property<string> password: "Password";
+    callback request-generate-password();
     VerticalBox {
         Text {
-            text: "Counter: \{root.counter}";
+            text: "Generated Password: \{root.password}";
         }
         Button {
-            text: "Increase value";
+            text: "Generate new";
             clicked => {
-                root.request-increase-value();
+                root.request-generate-password();
             }
         }
      }
 }
+
