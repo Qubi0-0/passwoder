@@ -36,7 +36,7 @@ slint::SharedString get_new_password(int words_num) {
 
 std::string get_word_from_json(int words_num) {
     // Path to the JSON file
-    const char* jsonFilePath = "../data/common_words.json";
+    const char* jsonFilePath = "data/common_words.json";
 
     // Open the JSON file
     FILE* fp = fopen(jsonFilePath, "r");
