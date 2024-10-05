@@ -27,7 +27,6 @@ Alternatively, this template will automatically download the Slint sources and c
 
 1. Download and extract the ZIP archive of this repository.
 
-    ```
 3. Configure with CMake
    ```
    mkdir build
