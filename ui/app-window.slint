@@ -1,7 +1,7 @@
-import { Button, VerticalBox, HorizontalBox, Slider} from "std-widgets.slint";
+import { Button, VerticalBox, HorizontalBox, Slider, CheckBox} from "std-widgets.slint";
 
 export component AppWindow inherits Window {
-    background: #4b4e53cc;
+    background: @linear-gradient(90deg, #3c3d3d 0%, #28344d 50%, #0860b3 100%);
     in-out property<string> password: "Password";
     in-out property<int> words_num: 3;
     callback request-generate-password();
@@ -10,8 +10,9 @@ export component AppWindow inherits Window {
 
     GridLayout {
         spacing: 5px;
+        padding: 25px;
         Row {
-            Rectangle {
+            HorizontalLayout {
                 Text {
                     overflow: TextOverflow.clip;
                     text: "Generated Password";
@@ -19,13 +20,13 @@ export component AppWindow inherits Window {
                     color: #ffffffcc;
                     font-italic: false;
                     font-size: 20px;
-                    horizontal-alignment: TextHorizontalAlignment.center;
+                    horizontal-alignment: TextHorizontalAlignment.left;
                     vertical-alignment: TextVerticalAlignment.center;
                     
-                }
-        
-                background: red; }
-
+                }       
+                // background: red; 
+            }
+                
         }
         Row {
             Rectangle {
@@ -41,20 +42,19 @@ export component AppWindow inherits Window {
                 }
                 background: #8a81814c; 
             }
-            }
+        }
         Row {
-            Rectangle {
                 Button {
                     text: "Generate new";
                     clicked => {
                         root.request-generate-password();
                     }
+                    preferred-width: 10px;
 
                 }
-                background: #8a81814c;
-                height: 34px; 
+
             }
-        }
+
         Row {
             HorizontalBox {
                 Slider {
