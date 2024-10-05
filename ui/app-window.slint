@@ -1,7 +1,7 @@
 import { Button, VerticalBox, HorizontalBox, Slider, CheckBox} from "std-widgets.slint";
 
 export component AppWindow inherits Window {
-    background: @linear-gradient(90deg, #3c3d3d 0%, #28344d 50%, #0860b3 100%);
+    background: @linear-gradient(90deg, #333333 0%, #374352 50%, #0860b3 100%);
     in-out property<string> password: "Password";
     in-out property<int> words_num: 3;
     callback request-generate-password();
@@ -24,7 +24,6 @@ export component AppWindow inherits Window {
                     vertical-alignment: TextVerticalAlignment.center;
                     
                 }       
-                // background: red; 
             }
                 
         }
@@ -40,7 +39,7 @@ export component AppWindow inherits Window {
                     horizontal-alignment: TextHorizontalAlignment.center;
                     vertical-alignment: TextVerticalAlignment.center;
                 }
-                background: #8a81814c; 
+                background: #a194944b; 
             }
         }
         Row {
