@@ -21,6 +21,8 @@ include_directories(${CMAKE_SOURCE_DIR}/third_party/rapidjson/include)
 
 
 add_executable(Passworder src/main.cpp)
+# Wyłącz ostrzeżenia -Wdeprecated-declarations dla celu Passworder
+target_compile_options(Passworder PRIVATE -Wno-deprecated-declarations)
 target_link_libraries(Passworder PRIVATE Slint::Slint)
 slint_target_sources(Passworder ui/app-window.slint)
 # On Windows, copy the Slint DLL next to the application binary so that it's found.

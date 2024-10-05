@@ -7,38 +7,73 @@ export component AppWindow inherits Window {
     callback request-generate-password();
     callback request-change-words_num();
 
-    VerticalBox {
-        opacity: 1;
-        Text {
-            text: "Generated Password: \{root.password}";
-            wrap: TextWrap.word-wrap;
-            color: #ffffffcc;
-            font-italic: false;
-            font-size: 20px;
-            
-        }
-        Button {
-            text: "Generate new";
-            clicked => {
-                root.request-generate-password();
-            }
-        }
-        HorizontalBox {
-            Slider {
-                value: root.words_num;
-                minimum: 1;
-                maximum: 5;
-                changed => {
-                    root.words_num = self.value;
-                    root.request-change-words_num();
+
+    GridLayout {
+        spacing: 5px;
+        Row {
+            Rectangle {
+                Text {
+                    overflow: TextOverflow.clip;
+                    text: "Generated Password";
+                    // wrap: TextWrap.word-wrap;
+                    color: #ffffffcc;
+                    font-italic: false;
+                    font-size: 20px;
+                    horizontal-alignment: TextHorizontalAlignment.center;
+                    vertical-alignment: TextVerticalAlignment.center;
+                    
                 }
+        
+                background: red; }
+
+        }
+        Row {
+            Rectangle {
+                Text {
+                    overflow: TextOverflow.clip;
+                    text: "\{root.password}";
+                    wrap: TextWrap.char-wrap;
+                    color: #ffffffcc;
+                    font-italic: false;
+                    font-size: 30px;
+                    horizontal-alignment: TextHorizontalAlignment.center;
+                    vertical-alignment: TextVerticalAlignment.center;
+                }
+                background: #8a81814c; 
             }
-            Text {
-                text: "Number of words: \{root.words_num}";
-                vertical-alignment: center;
-                horizontal-alignment: center;
-                font-size: 20px;
+            }
+        Row {
+            Rectangle {
+                Button {
+                    text: "Generate new";
+                    clicked => {
+                        root.request-generate-password();
+                    }
+
+                }
+                background: #8a81814c;
+                height: 34px; 
+            }
+        }
+        Row {
+            HorizontalBox {
+                Slider {
+                    value: root.words_num;
+                    minimum: 1;
+                    maximum: 5;
+                    changed => {
+                        root.words_num = self.value;
+                        root.request-change-words_num();
+                    }
+                }
+                Text {
+                    text: "Number of words: \{root.words_num}";
+                    vertical-alignment: center;
+                    horizontal-alignment: center;
+                    font-size: 20px;
+                }
             }
         }
     }
+
 }
