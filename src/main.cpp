@@ -14,6 +14,13 @@ int main(int argc, char **argv)
          ui->get_words_num();
     });
 
+    ui->on_request_copy_password([&] {
+        std::string_view password_view = ui->get_password();
+        std::string password(password_view);
+        std::string command = "echo \"" + password + "\" | xclip -selection clipboard";
+        system(command.c_str());
+    });
+
     ui->run();
     return 0;
 }

@@ -39,7 +39,7 @@ export component AppWindow inherits Window {
     in-out property <int> password_set: 1;
     callback request-generate-password();
     callback request-change-words_num();
-
+    callback request-copy-password();
 
     GridLayout {
         spacing: 5px;
@@ -74,6 +74,14 @@ export component AppWindow inherits Window {
                     vertical-alignment: TextVerticalAlignment.center;
                 }
                 background: #a1949449; 
+                Button {
+                    width: parent.width * 0.1;
+                    x: parent.x + parent.width * 0.86;
+                    text: "Copy";
+                    clicked => {
+                        root.request-copy-password();
+                    } 
+            }
             }
         }
         Row {
