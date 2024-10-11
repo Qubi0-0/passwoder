@@ -1,35 +1,68 @@
 import { Button, VerticalBox, HorizontalBox, Slider, CheckBox, ComboBox} from "std-widgets.slint";
-// import { cupertino-dark } from "std-widgets.slint";
+
+component Button inherits Rectangle {
+    property <color> first_back: #333333;
+    property <color> second_back: #374352;
+    property <color> third_back: #0860b3;
+    property <color> font_color: #ffffffcc;
+    property <length> border_radius_val: 10px;
+
+    in-out property text <=> txt.text;
+    callback clicked <=> touch.clicked;
+    border-radius: border_radius_val;
+    border-width: 1px;
+    border-color: root.background.darker(25%);
+    background: touch.pressed ? third_back : touch.has-hover ? second_back :  #445566;
+    height: 40px;
+    min-width: txt.preferred-width + 20px;
+    txt := Text {
+        font-size: 20px;
+        x: (parent.width - self.width)/2 + (touch.pressed ? 2px : 0);
+        y: (parent.height - self.height)/2 + (touch.pressed ? 1px : 0);
+        color: touch.pressed ? #fff : #eee;
+    }
+    touch := TouchArea { }
+}
+
+
 export component AppWindow inherits Window {
-    background: @linear-gradient(135deg, #333333 0%, #374352 50%, #0860b3 100%);
+    property <color> first_back: #333333;
+    property <color> second_back: #374352;
+    property <color> third_back: #0860b3;
+    property <color> font_color: #ffffffcc;
+    property <length> border_radius_val: 10px;
+
+
+    background: @linear-gradient(135deg, first_back 0%, second_back 50%, third_back 100%);
     in-out property<string> password: "Password";
     in-out property<int> words_num: 3;
     in-out property <int> password_set: 1;
-    property <color> font_color: #ffffffcc;
     callback request-generate-password();
     callback request-change-words_num();
+
 
     GridLayout {
         spacing: 5px;
         padding: 25px;
         Row {
             HorizontalLayout {
+                max-height: 50px;
                 Text {
                     overflow: TextOverflow.clip;
-                    text: "Generated Password";
-                    // wrap: TextWrap.word-wrap;
+                    text: "Passworder";
                     color: font_color;
-                    font-italic: false;
-                    font-size: 25px;
+                    font-italic: true;
+                    font-size: 40px;
                     horizontal-alignment: TextHorizontalAlignment.center;
                     vertical-alignment: TextVerticalAlignment.top;
                     
                 }       
             }
-                
         }
         Row {
             Rectangle {
+                // height: 50px;
+                border-radius: border_radius_val;
                 Text {
                     overflow: TextOverflow.clip;
                     text: "\{root.password}";
@@ -40,12 +73,12 @@ export component AppWindow inherits Window {
                     horizontal-alignment: TextHorizontalAlignment.center;
                     vertical-alignment: TextVerticalAlignment.center;
                 }
-                background: #a194944b; 
+                background: #a1949449; 
             }
         }
         Row {
-                Button {
-                    text: "Generate new";
+            Button {
+                    text: "Generate new password";
                     clicked => {
                         root.request-generate-password();
                     }
@@ -66,11 +99,12 @@ export component AppWindow inherits Window {
                         root.request-change-words_num();
                     }
                 }
-                
+                max-height: 50px;
             }
         }
         Row {
             HorizontalBox {
+                spacing: root.width *0.1;
                 Text {
                     text: "Number of words: \{root.words_num}";
                     color: font_color;
@@ -79,8 +113,8 @@ export component AppWindow inherits Window {
                     font-size: 20px;
                 }
                 ComboBox {
-                    enabled: true; 
-                    max-height: 10px;
+                    enabled: true;
+                    max-height: 10px; 
                     model: ["Common Words", "Words Dictionary"];
                     current-index: 0;
                     current-value: "Common Words";
@@ -91,7 +125,13 @@ export component AppWindow inherits Window {
                 }
             }
         }
+        Row {
+            Rectangle {
+                min-height: 16px; 
+            }
+        }
     }
 
     in-out property<string> selected_wordset: "Common Words";
 }
+
