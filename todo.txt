@@ -1,3 +1,0 @@
-- sort data (word, lenght - So user can choose the span of words lenght)
-- saving passwords
-- better UI
