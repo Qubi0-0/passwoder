@@ -14,6 +14,7 @@
 
 namespace JsonHandler {
 
+// Gets words_num amount of words from chosen json file
 std::string get_word_from_json(int words_num, const std::string& jsonFilePath) {
     // Open the JSON file
     FILE* fp = fopen(jsonFilePath.c_str(), "r");
@@ -61,6 +62,8 @@ std::string get_word_from_json(int words_num, const std::string& jsonFilePath) {
     }
 }
 
+
+// Responsible for opening the right json file and returning password
 slint::SharedString get_new_password(int words_num, const slint::SharedString& wordset) {
     std::string jsonFilePath;
     if (wordset == "Common Words") {
