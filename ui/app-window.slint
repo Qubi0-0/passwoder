@@ -1,6 +1,6 @@
 import { Button, VerticalBox, HorizontalBox, Slider, CheckBox, ComboBox} from "std-widgets.slint";
 
-component Button inherits Rectangle {
+component Buttoner inherits Rectangle {
     property <color> first_back: #333333;
     property <color> second_back: #374352;
     property <color> third_back: #0860b3;
@@ -37,6 +37,7 @@ export component AppWindow inherits Window {
     in-out property<string> password: "Password";
     in-out property<int> words_num: 3;
     in-out property <int> password_set: 1;
+    in-out property<string> selected_wordset: "Common Words";
     callback request-generate-password();
     callback request-change-words_num();
     callback request-copy-password();
@@ -73,8 +74,8 @@ export component AppWindow inherits Window {
                     horizontal-alignment: TextHorizontalAlignment.center;
                     vertical-alignment: TextVerticalAlignment.center;
                 }
-
-                Button {
+                Buttoner {                    
+                    property <int> value: 2;
                     width: 50px;
                     Image {
                         source: @image-url("../imgs/copy-icon.png");
@@ -83,7 +84,35 @@ export component AppWindow inherits Window {
                     }
                     clicked => {
                         root.request-copy-password();
+                        popup.visible = true;
+                        value = 2; timer.running = true; 
                     } 
+                    popup := Dialog {
+                        visible: false;
+                        y: parent.y - 40px;
+                        Rectangle {
+                            Text {
+                                text: "Copied";
+                                color: font_color;
+                                font-size: 20px;
+                                horizontal-alignment: center;
+                                vertical-alignment: center;
+                            }
+                            background: #14161b61;
+                            border-radius: 5px;
+                        }
+                    }
+                    timer := Timer {
+                        interval: 1s;
+                        running: true;
+                        triggered() => {
+                            value -= 1;
+                            if (value == 0) {
+                                self.running = false;
+                                popup.visible = false;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -142,7 +171,5 @@ export component AppWindow inherits Window {
             }
         }
     }
-
-    in-out property<string> selected_wordset: "Common Words";
 }
 
