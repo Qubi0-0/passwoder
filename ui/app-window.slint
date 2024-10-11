@@ -1,9 +1,11 @@
-import { Button, VerticalBox, HorizontalBox, Slider, CheckBox} from "std-widgets.slint";
+import { Button, VerticalBox, HorizontalBox, Slider, CheckBox, ComboBox} from "std-widgets.slint";
 
 export component AppWindow inherits Window {
-    background: @linear-gradient(90deg, #333333 0%, #374352 50%, #0860b3 100%);
+    background: @linear-gradient(135deg, #333333 0%, #374352 50%, #0860b3 100%);
     in-out property<string> password: "Password";
     in-out property<int> words_num: 3;
+    in-out property <int> password_set: 1;
+    property <color> font_color: #ffffffcc;
     callback request-generate-password();
     callback request-change-words_num();
 
@@ -17,11 +19,11 @@ export component AppWindow inherits Window {
                     overflow: TextOverflow.clip;
                     text: "Generated Password";
                     // wrap: TextWrap.word-wrap;
-                    color: #ffffffcc;
+                    color: font_color;
                     font-italic: false;
-                    font-size: 20px;
-                    horizontal-alignment: TextHorizontalAlignment.left;
-                    vertical-alignment: TextVerticalAlignment.center;
+                    font-size: 25px;
+                    horizontal-alignment: TextHorizontalAlignment.center;
+                    vertical-alignment: TextVerticalAlignment.top;
                     
                 }       
             }
@@ -33,7 +35,7 @@ export component AppWindow inherits Window {
                     overflow: TextOverflow.clip;
                     text: "\{root.password}";
                     wrap: TextWrap.char-wrap;
-                    color: #ffffffcc;
+                    color: font_color;
                     font-italic: false;
                     font-size: 30px;
                     horizontal-alignment: TextHorizontalAlignment.center;
@@ -65,14 +67,32 @@ export component AppWindow inherits Window {
                         root.request-change-words_num();
                     }
                 }
+                
+            }
+        }
+        Row {
+            HorizontalBox {
                 Text {
                     text: "Number of words: \{root.words_num}";
+                    color: font_color;
                     vertical-alignment: center;
                     horizontal-alignment: center;
                     font-size: 20px;
+                }
+                ComboBox {
+                    enabled: true; 
+                    max-height: 10px;
+                    model: ["Common Words", "Words Dictionary"];
+                    current-index: 0;
+                    current-value: "Common Words";
+                    selected => {
+                        // Handle selection change
+                        root.selected_wordset = self.current_value;
+                    }
                 }
             }
         }
     }
 
+    in-out property<string> selected_wordset: "Common Words";
 }
