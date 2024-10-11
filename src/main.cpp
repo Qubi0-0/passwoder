@@ -1,15 +1,6 @@
 #include "app-window.h"
-#include <cstdio>
-#include <ostream>
-#include <string>
-#include <iostream>
-#include <vector>
-#include <cstdlib>
-#include <ctime>
 #include "jsonwords.h"
 
-// slint::SharedString get_new_password(int words_num);
-// std::string get_word_from_json(int words_num);
 
 int main(int argc, char **argv)
 {

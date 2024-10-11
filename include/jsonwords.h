@@ -1,9 +1,16 @@
 #ifndef JSONWORDS_H_
 #define JSONWORDS_H_
 
-#include "app-window.h"
 #include "rapidjson/document.h"
 #include "rapidjson/filereadstream.h"
+#include <cstdio>
+#include <ostream>
+#include <string>
+#include <iostream>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
+
 
 namespace JsonHandler {
 
