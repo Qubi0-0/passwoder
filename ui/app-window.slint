@@ -1,5 +1,5 @@
 import { Button, VerticalBox, HorizontalBox, Slider, CheckBox, ComboBox} from "std-widgets.slint";
-
+// import { cupertino-dark } from "std-widgets.slint";
 export component AppWindow inherits Window {
     background: @linear-gradient(135deg, #333333 0%, #374352 50%, #0860b3 100%);
     in-out property<string> password: "Password";
@@ -8,7 +8,6 @@ export component AppWindow inherits Window {
     property <color> font_color: #ffffffcc;
     callback request-generate-password();
     callback request-change-words_num();
-
 
     GridLayout {
         spacing: 5px;
