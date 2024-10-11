@@ -45,7 +45,7 @@ export component AppWindow inherits Window {
     GridLayout {
         spacing: 5px;
         padding: 25px;
-        Row {
+        Row { // Title 
             HorizontalLayout {
                 max-height: 50px;
                 Text {
@@ -60,9 +60,9 @@ export component AppWindow inherits Window {
                 }       
             }
         }
-        Row {
+        Row { // Place for printing generated password and copying it
             GridLayout {
-                Text {
+                Text { // Place for printing generated password
                     overflow: TextOverflow.clip;
                     text: "        \{root.password}";
                     wrap: TextWrap.char-wrap;
@@ -72,7 +72,7 @@ export component AppWindow inherits Window {
                     horizontal-alignment: TextHorizontalAlignment.center;
                     vertical-alignment: TextVerticalAlignment.center;
                 }
-                Buttoner {                    
+                Buttoner { // Copy Button        
                     property <int> value: 2;
                     width: 50px;
                     Image {
@@ -85,7 +85,7 @@ export component AppWindow inherits Window {
                         popup.visible = true;
                         value = 2; timer.running = true; 
                     } 
-                    popup := Dialog {
+                    popup := Dialog { // Popup message
                         visible: false;
                         y: parent.y - 40px;
                         Rectangle {
@@ -100,7 +100,7 @@ export component AppWindow inherits Window {
                             border-radius: 5px;
                         }
                     }
-                    timer := Timer {
+                    timer := Timer { // Logic for popup time 
                         interval: 0.5s;
                         running: true;
                         triggered() => {
@@ -114,7 +114,7 @@ export component AppWindow inherits Window {
                 }
             }
         }
-        Row {
+        Row { // Button for generating new password
             Button {
                     text: "Generate new password";
                     clicked => {
@@ -126,7 +126,7 @@ export component AppWindow inherits Window {
 
             }
 
-        Row {
+        Row { // Slider for choosing amount of words in password
             HorizontalBox {
                 Slider {
                     value: root.words_num;
@@ -140,8 +140,8 @@ export component AppWindow inherits Window {
                 max-height: 50px;
             }
         }
-        Row {
-            HorizontalBox {
+        Row { // Displaying amount of chosen words and choosing word sets
+            HorizontalBox { 
                 spacing: root.width *0.1;
                 Text {
                     text: "Number of words: \{root.words_num}";
@@ -163,7 +163,7 @@ export component AppWindow inherits Window {
                 }
             }
         }
-        Row {
+        Row { // Empty space for blocking situation when word set lists go beyond app window
             Rectangle {
                 min-height: 16px; 
             }
