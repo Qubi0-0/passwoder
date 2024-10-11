@@ -17,7 +17,8 @@ if (NOT Slint_FOUND)
 endif (NOT Slint_FOUND)
 
 # Additional libraries
-include_directories(${CMAKE_SOURCE_DIR}/third_party/rapidjson/include)
+# include_directories(${CMAKE_SOURCE_DIR}include/third_party/rapidjson/include)
+include_directories(${CMAKE_SOURCE_DIR}/include)
 
 
 add_executable(Passworder src/main.cpp)
