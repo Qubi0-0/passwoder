@@ -60,12 +60,12 @@ export component AppWindow inherits Window {
             }
         }
         Row {
-            Rectangle {
+            GridLayout {
                 // height: 50px;
-                border-radius: border_radius_val;
+                // border-radius: border_radius_val;
                 Text {
                     overflow: TextOverflow.clip;
-                    text: "\{root.password}";
+                    text: "        \{root.password}";
                     wrap: TextWrap.char-wrap;
                     color: font_color;
                     font-italic: false;
@@ -73,15 +73,19 @@ export component AppWindow inherits Window {
                     horizontal-alignment: TextHorizontalAlignment.center;
                     vertical-alignment: TextVerticalAlignment.center;
                 }
-                background: #a1949449; 
+
                 Button {
-                    width: parent.width * 0.1;
-                    x: parent.x + parent.width * 0.86;
-                    text: "Copy";
+                    width: 50px;
+                    // x: parent.x + parent.width * 0.87;
+                    Image {
+                        source: @image-url("../imgs/copy-icon.png");
+                        width: parent.width * 0.9;
+                        height: parent.height;
+                    }
                     clicked => {
                         root.request-copy-password();
                     } 
-            }
+                }
             }
         }
         Row {
